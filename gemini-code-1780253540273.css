@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #050510;
+    color: #fff;
+    font-family: 'Tajawal', sans-serif;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    user-select: none; 
+    -webkit-user-select: none;
+}
+
+/* الصندوق الكريستالي */
+.crystal-box {
+    width: min(30vw, 120px);
+    height: min(30vw, 120px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid #b76e79;
+    border-radius: 15px;
+    box-shadow: 0 0 30px #b76e79, inset 0 0 20px #b76e79;
+    transition: all 1s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pulse 2s infinite;
+    z-index: 10;
+    text-align: center;
+    padding: 10px;
+}
+
+#box-text {
+    font-family: 'Amiri', serif;
+    font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+    color: #ffdde1;
+    text-shadow: 0 0 10px #b76e79;
+    transition: opacity 0.5s;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 15px #b76e79, inset 0 0 10px #b76e79; transform: scale(1); }
+    50% { box-shadow: 0 0 30px #ffdde1, inset 0 0 15px #ffdde1; transform: scale(1.05); }
+    100% { box-shadow: 0 0 15px #b76e79, inset 0 0 10px #b76e79; transform: scale(1); }
+}
+
+.crystal-box.opened {
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* الكلمات الرومانسية */
+.lyrics-container {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    text-align: center;
+    width: 90%;
+    pointer-events: none;
+}
+
+.lyric-line {
+    font-family: 'Amiri', serif;
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    color: #ffdde1;
+    text-shadow: 0 0 15px #b76e79, 0 0 30px #ffdde1;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 2s ease-out;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    line-height: 1.5;
+}
+
+.lyric-line.show {
+    opacity: 1;
+    transform: translateY(-20px);
+}
+
+.lyric-line.hide {
+    opacity: 0;
+    transform: translateY(-60px);
+}
+
+/* قسم النهاية */
+.finale-section {
+    position: absolute;
+    bottom: 30%;
+    opacity: 0;
+    transition: opacity 3s ease-in;
+    text-align: center;
+    z-index: 20;
+    width: 100%;
+}
+
+.finale-section.show {
+    opacity: 1;
+}
+
+.main-title {
+    font-family: 'Amiri', serif;
+    font-size: clamp(3rem, 12vw, 5rem);
+    margin-bottom: 5px;
+    color: #ffdde1;
+    text-shadow: 0 0 30px #b76e79;
+}
+
+.subtitle {
+    font-family: 'Tajawal', sans-serif;
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+    color: #fff;
+    opacity: 0.8;
+    text-shadow: 0 0 10px #b76e79;
+}
+
+/* إخفاء يوتيوب عن الشاشة مع السماح له بالعمل */
+#youtube-player {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    visibility: hidden;
+}
